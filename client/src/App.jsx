@@ -9,6 +9,7 @@ import Messages from './pages/Messages'
 import MyOrders from './pages/MyOrders'
 import Loading from './pages/Loading'
 import Navbar from './components/Navbar'
+import Chatbox from './components/Chatbox'
 
 const App = () => {
   const {pathname} = useLocation()
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/loading' element={<Loading/>}/>
 
       </Routes>
+      <Chatbox/>
     </div>
   )
 }
