@@ -210,7 +210,7 @@ const MyListings = () => {
                                 <TrashIcon className='size-4' />
                               </button>
                             )}
-                            <button onClick={()=>navigate(`/edit-listing/${listingId}`)} className='p-2 border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-indigo-600'>
+                            <button onClick={()=>navigate(`/edit-listing/${listing.id}`)} className='p-2 border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-indigo-600'>
                                 <Edit className='size-4' />
                               </button>
                               <button onClick={()=>toggleStatus(listing.id)} className='p-2 border border-gray-300 rounded-lg hover:bg-gray-50  hover:text-purple-600'>
