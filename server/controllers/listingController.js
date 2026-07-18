@@ -82,7 +82,7 @@ export const getAllUserListing = async (req, res) => {
     // get all listings except deleted
     const listings = await prisma.listing.findMany({
       where: { ownerId: userId, status: { not: "deleted" } },
-      orderBy: { cretedAt: "desc" },
+      orderBy: { createdAt: "desc" },
     });
     const user = await prisma.user.findUnique({
       where: { id: userId },
