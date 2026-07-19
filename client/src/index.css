@@ -1,10 +1,10 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Yuyu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400..700&display=swap');
 @import "tailwindcss";
 
 
 *{
-  font-family: "Yuyu", sans-serif;
+ font-family: "Kameron", serif;
 }
 
 button{

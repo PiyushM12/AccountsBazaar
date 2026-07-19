@@ -4,8 +4,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import ListingDetailsModal from '../../components/admin/ListingDetailsModal';
 import { dummyListings } from '../../assets/assets';
+import { useAuth, useUser } from '@clerk/react';
+import api from '../../configs/axios';
+import toast from 'react-hot-toast';
 
 const Dashboard = () => {
+    const { user}= useUser();
+    const {getToken} = useAuth()
     const currency = import.meta.env.VITE_CURRENCY || '$';
 
     const [loading, setLoading] = useState(true);
@@ -25,20 +30,31 @@ const Dashboard = () => {
         { title: 'Total Users', value: dashboardData.totalUser || '0', icon: UsersIcon },
     ];
 
-    const fetchDashboardData = async () => {
-        setDashboardData({
-            totalListings: 5,
-            totalRevenue: 2980,
-            activeListings: 3,
-            totalUser: 7,
-            recentListings: dummyListings,
+   const fetchDashboardData = async () => {
+    try {
+        const token = await getToken();
+
+        const { data } = await api.get("/api/admin/dashboard", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
         });
+        
+        setDashboardData(data.dashboardData);
+    } catch (error) {
+        console.error(error);
+        toast.error(error?.response?.data?.message || error.message);
+    } finally {
         setLoading(false);
-    };
+    }
+};
 
     useEffect(() => {
+        if(user){
         fetchDashboardData();
-    }, []);
+        }
+        
+    }, [user]);
 
     return loading ? (
         <div className='flex items-center justify-center h-full'>

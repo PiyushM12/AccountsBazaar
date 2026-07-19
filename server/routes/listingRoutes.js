@@ -15,8 +15,8 @@ listingRouter.put('/:id/status', protect, toggleStatus)
 listingRouter.delete('/:listingId', protect, deleteUserListing)
 listingRouter.post('/add-credential', protect, addCredential)
 listingRouter.put('/featured/:id', protect, markFeatured)
-listingRouter.get('/users-orders', protect, getAllUserOrders)
+listingRouter.get('/user-orders', protect, getAllUserOrders)
 listingRouter.post('/withdraw', protect, withdrawAmount)
-listingRouter.post('/purchase-account/:listingId', protect, purchaseAccount)
+listingRouter.get('/purchase-account/:listingId', protect, purchaseAccount)
 
 export default listingRouter

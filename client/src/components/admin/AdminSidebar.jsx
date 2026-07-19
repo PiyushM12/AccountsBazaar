@@ -1,14 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import { BanknoteIcon, CheckIcon, LayoutDashboardIcon, ListIcon, Settings2Icon, WalletIcon } from 'lucide-react';
 import { assets } from '../../assets/assets';
+import { useUser } from '@clerk/react';
 
 const AdminSidebar = () => {
 
-    const user = {
-        firstName: 'John',
-        lastName: 'Doe',
-        imageUrl: assets.user_profile,
-    }
+    const {user}= useUser()
 
     const adminNavlinks = [
         { name: 'Dashboard', path: '/admin', icon: LayoutDashboardIcon },
