@@ -310,12 +310,12 @@ export const getAllUserOrders = async(req,res)=>{
             return res.json({orders:[]});
         }
         // attach the credentials to each other
-        const credential= await prisma.credential.findMany({
+        const credentials= await prisma.credential.findMany({
             where:{listingId:{in : orders.map((order)=>order.listingId)}}
         })
 
         const ordersWithCredentials = orders.map((order)=>{
-            const credential = credential.find((cred)=> cred.listingId=== order.listingId)
+            const credential = credentials.find((cred)=> cred.listingId=== order.listingId)
             return {...order,credential}
         })
         return res.json({orders :ordersWithCredentials});
