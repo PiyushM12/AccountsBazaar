@@ -315,7 +315,7 @@ export const getAllUserOrders = async(req,res)=>{
         })
 
         const ordersWithCredentials = orders.map((order)=>{
-            const credential = credentials.find((cred)=> cred.listingId=== order.listingId)
+            const credential = credential.find((cred)=> cred.listingId=== order.listingId)
             return {...order,credential}
         })
         return res.json({orders :ordersWithCredentials});
