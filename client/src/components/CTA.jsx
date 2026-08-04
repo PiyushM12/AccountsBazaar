@@ -17,22 +17,22 @@ const CTA = () => {
 
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider mb-4 border border-white/20">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider mb-3 border border-white/20">
               <Sparkles className="size-3.5 text-amber-300" />
-              <span>Ready to Monetize Your Reach?</span>
+              <span>Ready to list or buy?</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              Turn Your Social Media Accounts into Cash Today
+              Turn your account into a verified sale with confidence
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
-              List your Instagram, YouTube, X, or TikTok page in under 2 minutes. Receive verified buyer offers backed by guaranteed escrow protection.
+              List a profile in minutes or browse verified listings with escrow protection built in.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
             <button
               onClick={() => user ? navigate('/create-listing') : openSignIn()}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-950 font-bold text-sm shadow-xl flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-105"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-950 font-bold text-sm shadow-xl flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.01] min-h-[46px]"
             >
               <PlusCircle className="size-5 text-indigo-600" />
               <span>Create Free Listing</span>
@@ -40,7 +40,7 @@ const CTA = () => {
 
             <button
               onClick={() => navigate('/marketplace')}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
             >
               <span>Explore Marketplace</span>
               <ArrowRight className="size-4" />

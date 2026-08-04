@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import logo from "../assets/accountsbazaarlogo.png";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { XIcon, MenuIcon, GripIcon, MessageCircleMoreIcon, ListIcon, BoxIcon, PlusCircle, ShieldCheck, Sparkles } from "lucide-react";
+import { XIcon, MenuIcon, GripIcon, MessageCircleMoreIcon, ListIcon, BoxIcon, PlusCircle, Sparkles } from "lucide-react";
 import { useClerk, useUser, UserButton } from '@clerk/react';
 
 const Navbar = () => {
@@ -22,13 +22,7 @@ const Navbar = () => {
                     onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} 
                     className="flex items-center gap-3 cursor-pointer group"
                 >
-                    <div className="relative">
-                        <img src={logo} alt="AccountsBazaar Logo" className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
-                        <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-[#0b0f19]"></span>
-                        </span>
-                    </div>
+                    <img src={logo} alt="AccountsBazaar Logo" className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
                 </div>
 
                 {/* Desktop Nav Links */}

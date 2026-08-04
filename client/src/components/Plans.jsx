@@ -32,13 +32,13 @@ const Plans = () => {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-xs font-semibold uppercase tracking-wider mb-3">
           <RefreshCw className="size-3.5" />
-          <span>Platform Protections & Plans</span>
+          <span>Secure transactions and seller tools</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Why Top Creators Trust <span className="gradient-text">AccountsBazaar</span>
+          Why sellers and buyers choose <span className="gradient-text">AccountsBazaar</span>
         </h2>
         <p className="text-slate-400 text-base sm:text-lg mt-3">
-          Whether you're buying a ready-to-monetize channel or selling your digital assets, our built-in protections keep every transaction seamless.
+          Every transaction is supported by escrow, verification, and clear seller tools so the process stays simple.
         </p>
       </div>
 

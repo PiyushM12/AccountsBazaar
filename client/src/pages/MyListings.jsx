@@ -32,7 +32,9 @@ import toast from 'react-hot-toast';
 import api from '../configs/axios';
 
 const MyListings = () => {
-  const { userListings, balance } = useSelector((state) => state.listing);
+  const listingState = useSelector((state) => state.listing || {});
+  const userListings = Array.isArray(listingState.userListings) ? listingState.userListings : [];
+  const balance = listingState.balance || { earned: 0, withdrawn: 0, available: 0 };
   const { getToken } = useAuth();
   const dispatch = useDispatch();
   const currency = import.meta.env.VITE_CURRENCY || '$';
@@ -40,9 +42,9 @@ const MyListings = () => {
   const [showCredentialSubmission, setShowCredentialSubmission] = useState(null);
   const [showWithdrawl, setShowWithdrawl] = useState(null);
 
-  const totalValue = userListings.reduce((sum, listing) => sum + (listing.price || 0), 0);
-  const activeListing = userListings.filter((listing) => listing.status === 'active').length;
-  const soldListing = userListings.filter((listing) => listing.status === 'sold').length;
+  const totalValue = userListings.reduce((sum, listing) => sum + (Number(listing?.price) || 0), 0);
+  const activeListing = userListings.filter((listing) => listing?.status === 'active').length;
+  const soldListing = userListings.filter((listing) => listing?.status === 'sold').length;
 
   const formatNumber = (num) => {
     if (num >= 1000000) return (num / 1000000).toFixed(1) + "M";
