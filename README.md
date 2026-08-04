@@ -50,7 +50,7 @@ AccountsBazaar is a comprehensive, full-stack social media profile marketplace p
 
 ---
 
-## ⚙️ Project Architecture & Directory Layout
+## ⚙️ Project Architecture & Directory 
 
 ```text
 AccountsBazaar/
