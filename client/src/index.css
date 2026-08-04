@@ -1,20 +1,82 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400..700&display=swap');
+@import "lenis/dist/lenis.css";
 @import "tailwindcss";
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-*{
- font-family: "Kameron", serif;
+  * {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    background-color: #090d16;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
 }
 
-button{
-  @apply cursor-pointer
+/* Refined Subtle Dark Glassmorphism */
+.glass-panel {
+  background: rgba(14, 20, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.no-scrollbar ::-webkit-scrollbar{
+.glass-card {
+  background: rgba(18, 25, 40, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(24, 33, 52, 0.8);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-.cl-drawerRoot{
-  z-index:100;
+.cl-drawerRoot {
+  z-index: 100;
 }
