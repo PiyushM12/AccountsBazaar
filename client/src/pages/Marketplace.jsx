@@ -29,33 +29,43 @@ const Marketplace = () => {
     }
   }, [platformParam]);
 
-  const { listings } = useSelector((state) => state.listing);
+  const listingState = useSelector((state) => state.listing || {});
+  const listings = Array.isArray(listingState.listings) ? listingState.listings : [];
 
   const filteredListings = listings.filter((listing) => {
+    const safeListing = listing || {};
+    const platform = String(safeListing.platform || "").toLowerCase();
+    const price = Number(safeListing.price) || 0;
+    const followers = Number(safeListing.followers_count) || 0;
+    const niche = String(safeListing.niche || "").toLowerCase();
+    const title = String(safeListing.title || "").toLowerCase();
+    const username = String(safeListing.username || "").toLowerCase();
+    const description = String(safeListing.description || "").toLowerCase();
+
     if (filters.platform && filters.platform.length > 0) {
-      if (!filters.platform.includes(listing.platform?.toLowerCase())) return false;
+      if (!filters.platform.includes(platform)) return false;
     }
     if (filters.maxPrice) {
-      if (listing.price > filters.maxPrice) return false;
+      if (price > filters.maxPrice) return false;
     }
     if (filters.minFollowers) {
-      if (listing.followers_count < filters.minFollowers) return false;
+      if (followers < filters.minFollowers) return false;
     }
     if (filters.niche) {
-      if (listing.niche?.toLowerCase() !== filters.niche.toLowerCase()) return false;
+      if (niche !== filters.niche.toLowerCase()) return false;
     }
 
-    if (filters.verified && !listing.verified) return false;
-    if (filters.monetized && !listing.monetized) return false;
+    if (filters.verified && !safeListing.verified) return false;
+    if (filters.monetized && !safeListing.monetized) return false;
 
     if (search) {
       const trimmed = search.trim().toLowerCase();
-      const matchTitle = listing.title?.toLowerCase().includes(trimmed);
-      const matchUsername = listing.username?.toLowerCase().includes(trimmed);
-      const matchDesc = listing.description?.toLowerCase().includes(trimmed);
-      const matchPlatform = listing.platform?.toLowerCase().includes(trimmed);
-      const matchNiche = listing.niche?.toLowerCase().includes(trimmed);
-      
+      const matchTitle = title.includes(trimmed);
+      const matchUsername = username.includes(trimmed);
+      const matchDesc = description.includes(trimmed);
+      const matchPlatform = platform.includes(trimmed);
+      const matchNiche = niche.includes(trimmed);
+
       if (!matchTitle && !matchUsername && !matchDesc && !matchPlatform && !matchNiche) {
         return false;
       }
@@ -66,11 +76,17 @@ const Marketplace = () => {
 
   // Sorting logic
   const sortedListings = [...filteredListings].sort((a, b) => {
-    if (sortBy === "price_asc") return a.price - b.price;
-    if (sortBy === "price_desc") return b.price - a.price;
-    if (sortBy === "followers") return (b.followers_count || 0) - (a.followers_count || 0);
-    // default: featured first
-    return a.featured ? -1 : b.featured ? 1 : 0;
+    const first = a || {};
+    const second = b || {};
+    const firstPrice = Number(first.price) || 0;
+    const secondPrice = Number(second.price) || 0;
+    const firstFollowers = Number(first.followers_count) || 0;
+    const secondFollowers = Number(second.followers_count) || 0;
+
+    if (sortBy === "price_asc") return firstPrice - secondPrice;
+    if (sortBy === "price_desc") return secondPrice - firstPrice;
+    if (sortBy === "followers") return secondFollowers - firstFollowers;
+    return first.featured ? -1 : second.featured ? 1 : 0;
   });
 
   const activeFiltersCount = 
@@ -187,7 +203,7 @@ const Marketplace = () => {
 
           {/* Cards Grid */}
           {sortedListings.length > 0 ? (
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6'>
               {sortedListings.map((listing) => (
                 <ListingCard listing={listing} key={listing.id || listing._id} />
               ))}
@@ -197,9 +213,9 @@ const Marketplace = () => {
               <div className="size-16 bg-slate-900 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/10 text-indigo-400">
                 <Sparkles className="size-8" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">No Matching Listings Found</h3>
+              <h3 className="text-xl font-bold text-white mb-2">No listings available right now</h3>
               <p className="text-slate-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">
-                We couldn't find any accounts matching your exact search criteria or filter thresholds.
+                There are no matching account listings at the moment. Try widening your filters or check back soon for fresh inventory.
               </p>
               <button
                 onClick={() => {
@@ -215,7 +231,7 @@ const Marketplace = () => {
                 }}
                 className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 text-xs"
               >
-                Reset All Filters
+                Reset Filters
               </button>
             </div>
           )}
