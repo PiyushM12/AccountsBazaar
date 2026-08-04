@@ -27,7 +27,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden py-14 sm:py-20 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24">
+    <div className="relative overflow-hidden py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24">
       
       {/* Subtle Background Accent Grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none -z-10" />
@@ -35,24 +35,24 @@ const Hero = () => {
       <div className="relative max-w-5xl mx-auto flex flex-col items-center text-center">
         
         {/* Top Announcement Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-white/10 text-slate-300 text-xs sm:text-sm font-medium shadow-sm mb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/70 border border-white/10 text-slate-300 text-xs sm:text-sm font-medium shadow-sm mb-5">
           <Sparkles className="size-4 text-indigo-400" />
-          <span>The #1 Escrow Marketplace for Verified Social Accounts</span>
+          <span>Trusted escrow marketplace for social media accounts</span>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.15] mb-5">
-          Buy & Sell Verified <br className="hidden sm:inline" />
-          <span className="text-indigo-400">Social Media Accounts</span> Safely
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.15] mb-4">
+          Buy and sell <br className="hidden sm:inline" />
+          <span className="text-indigo-400">verified social accounts</span> with confidence
         </h1>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl font-normal leading-relaxed mb-8">
-          The premier escrow-backed marketplace to acquire or sell high-reach Instagram, YouTube, X, TikTok, and Telegram channels with guaranteed ownership transfer.
+        <p className="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl font-normal leading-relaxed mb-7">
+          A straightforward marketplace for buying and selling established Instagram, YouTube, X, TikTok, and Telegram accounts with secure escrow protection.
         </p>
 
         {/* Search Box & Quick Chips */}
-        <div className="w-full max-w-2xl glass-panel p-2.5 sm:p-3 rounded-2xl border border-white/10 shadow-2xl mb-8">
+        <div className="w-full max-w-2xl glass-panel p-2.5 sm:p-3 rounded-2xl border border-white/10 shadow-2xl mb-7">
           
           {/* Quick Platform Chips */}
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2.5 mb-2 px-1 text-xs">
@@ -79,13 +79,13 @@ const Hero = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Search profiles, e.g. 100k tech channel, gaming..."
+                placeholder="Search by niche, platform, or audience size"
                 className="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 text-white placeholder-slate-400 rounded-xl border border-slate-800 focus:outline-none focus:border-indigo-500 transition-all text-xs sm:text-sm"
               />
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer text-xs sm:text-sm whitespace-nowrap"
+              className="w-full sm:w-auto px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer text-xs sm:text-sm whitespace-nowrap min-h-[44px]"
             >
               <span>Explore Market</span>
               <ArrowRight className="size-4" />
